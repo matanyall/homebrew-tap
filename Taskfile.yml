@@ -1,0 +1,63 @@
+version: "3"
+
+tasks:
+  test-setup:
+    cmds:
+    - brew test-bot --only-setup
+
+  test-only-cleanup-before:
+    cmds:
+    - brew test-bot --only-cleanup-before
+
+  test-only-tap-syntax:
+    cmds:
+    - brew test-bot --only-tap-syntax
+
+  test-only-formulae:
+    desc: Run brew test-bot command for formulae
+    cmds:
+    - brew test-bot --only-formulae
+
+  test:
+    desc: Run all the tests
+    deps:
+    - test-setup
+    - test-only-cleanup-before
+    - test-only-tap-syntax
+    - test-only-formulae
+
+  style-lint:
+    desc: Run brew style command
+    cmds:
+    - brew style .
+
+  # run the stle formatter on each file in the Formula directory
+  style-fix:
+    desc: Run brew style --fix command
+    cmds:
+    - brew style --formula --fix Formula/*.rb
+
+  install-local:
+    desc: Install the formula locally
+    cmds:
+    - brew install --verbose --formula Formula/frobnicate.rb
+
+  uninstall:
+    desc: Uninstall the formula
+    cmds:
+    - brew uninstall frobnicate
+
+  do:
+    desc: Run all the tests and style checks
+    deps:
+    - task: test-setup
+    - task: test-only-cleanup-before
+    - task: test-only-tap-syntax
+    - task: style-fix
+
+  test-install:
+    desc: Run all the tests and style checks
+    deps:
+    - task: uninstall
+    - task: install-local
+
