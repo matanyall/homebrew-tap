@@ -2,10 +2,10 @@ class Frobnicate < Formula
   desc "Tool for interacting with Turbo Encabulators"
   homepage "https://github.com/matanyall/frobnicate"
 
-  url "https://github.com/matanyall/frobnicate/releases/download/v0.1.0/frobnicate_v0.1.0_macos-14.pex"
+  url "https://github.com/matanyall/frobnicate/releases/download/v0.2.0/frobnicate_v0.2.0_macos-14.pex"
 
-  version "0.1.0"
-  sha256 "a871d90c4ff2d86e6bfb1fe4233e94ac72d3b1d17adef18a0d8a185c7d2db530"
+  version "0.2.0"
+  sha256 "fcb9d205212d01759295d6f65c66d3b806a1baeb4904bbb1a37ac598c7972b93"
   license ""
   depends_on "python@3.12"
 
